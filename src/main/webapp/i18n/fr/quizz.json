@@ -1,0 +1,22 @@
+{
+    "togafquizzApp": {
+        "quizz" : {
+            "home": {
+                "title": "Quizzs",
+                "createLabel": "Créer un nouveau Quizz",
+                "createOrEditLabel": "Créer ou éditer un Quizz"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Quizz {{ id }} ?"
+            },
+            "detail": {
+                "title": "Quizz"
+            },
+            "libelle": "Libelle",
+            "numero": "Numero",
+            "dureeEnMinutes": "DureeEnMinutes",
+            "type": "Type"
+        }
+    }
+}
+

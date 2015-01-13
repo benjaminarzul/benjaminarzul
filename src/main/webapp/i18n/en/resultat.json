@@ -1,0 +1,20 @@
+{
+    "togafquizzApp": {
+        "resultat" : {
+            "home": {
+                "title": "Resultats",
+                "createLabel": "Create a new Resultat",
+                "createOrEditLabel": "Create or edit a Resultat"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Resultat {{ id }}?"
+            },
+            "detail": {
+                "title": "Resultat"
+            },
+            "pourcentageReussite": "PourcentageReussite",
+            "user": "user",
+            "quizz": "quizz"
+        }
+    }
+}

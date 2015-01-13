@@ -1,0 +1,40 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "otherEntityName": "quizz",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Quizz",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "otherEntityName": "reponse",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Reponse"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Libelle",
+            "fieldNameUnderscored": "libelle"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "scenario",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Scenario",
+            "fieldNameUnderscored": "scenario"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": true,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "changelogDate": "20150113120248"
+}

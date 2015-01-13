@@ -1,0 +1,40 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Libelle",
+            "fieldNameUnderscored": "libelle"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "numero",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Numero",
+            "fieldNameUnderscored": "numero"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "dureeEnMinutes",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "DureeEnMinutes",
+            "fieldNameUnderscored": "duree_en_minutes"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "type",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Type",
+            "fieldNameUnderscored": "type"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "changelogDate": "20150112160611"
+}

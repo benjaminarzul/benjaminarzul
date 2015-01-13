@@ -1,0 +1,20 @@
+{
+    "togafquizzApp": {
+        "session" : {
+            "home": {
+                "title": "Sessions",
+                "createLabel": "Créer un nouveau Session",
+                "createOrEditLabel": "Créer ou éditer un Session"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Session {{ id }} ?"
+            },
+            "detail": {
+                "title": "Session"
+            },
+            "debut": "Debut",
+            "fin": "Fin"
+        }
+    }
+}
+

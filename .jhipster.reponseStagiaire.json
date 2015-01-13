@@ -1,0 +1,33 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "otherEntityName": "resultat",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Resultat",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "otherEntityName": "question",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Question",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "otherEntityName": "reponse",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Reponse",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "changelogDate": "20150113142001"
+}

@@ -1,0 +1,20 @@
+{
+    "togafquizzApp": {
+        "reponse" : {
+            "home": {
+                "title": "Reponses",
+                "createLabel": "Create a new Reponse",
+                "createOrEditLabel": "Create or edit a Reponse"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Reponse {{ id }}?"
+            },
+            "detail": {
+                "title": "Reponse"
+            },
+            "libelle": "Libelle",
+            "explication": "Explication",
+            "question": "question"
+        }
+    }
+}

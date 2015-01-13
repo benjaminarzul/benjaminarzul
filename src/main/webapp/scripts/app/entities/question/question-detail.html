@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="togafquizzApp.question.detail.title">Question</span> {{question.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.question.libelle">Libelle</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{question.libelle}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.question.scenario">Scenario</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{question.scenario}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.question.quizz">quizz</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{question.quizz.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="question"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

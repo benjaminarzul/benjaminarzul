@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="togafquizzApp.quizz.detail.title">Quizz</span> {{quizz.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.quizz.libelle">Libelle</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{quizz.libelle}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.quizz.numero">Numero</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{quizz.numero}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.quizz.dureeEnMinutes">DureeEnMinutes</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{quizz.dureeEnMinutes}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.quizz.type">Type</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{quizz.type}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="quizz"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

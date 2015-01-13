@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Resultat.
+    -->
+    <changeSet id="20150113141656" author="jhipster">
+        <createTable tableName="T_RESULTAT">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="pourcentage_reussite" type="integer"/>
+            <column name="user_id" type="bigint"/>
+            <column name="quizz_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="T_RESULTAT"
+                                 constraintName="fk_resultat_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_USER"/>
+
+        <addForeignKeyConstraint baseColumnNames="quizz_id"
+                                 baseTableName="T_RESULTAT"
+                                 constraintName="fk_resultat_quizz_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_QUIZZ"/>
+
+    </changeSet>
+</databaseChangeLog>

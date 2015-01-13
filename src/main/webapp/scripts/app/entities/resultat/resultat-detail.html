@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="togafquizzApp.resultat.detail.title">Resultat</span> {{resultat.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.resultat.pourcentageReussite">PourcentageReussite</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{resultat.pourcentageReussite}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.resultat.user">user</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{resultat.user.id}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="togafquizzApp.resultat.quizz">quizz</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{resultat.quizz.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="resultat"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

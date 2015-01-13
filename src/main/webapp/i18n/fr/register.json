@@ -1,0 +1,44 @@
+{
+    "register": {
+        "title": "Création de compte utilisateur",
+        "form": {
+            "firstname": "Prénom",
+            "firstname.placeholder": "Votre prénom",
+            "lastname": "Nom",
+            "lastname.placeholder": "Votre nom",
+            "society": "Société",
+            "society.placeholder": "Votre société",
+            "button": "Enregistrement"
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Votre nom d'utilisateur est obligatoire.",
+                    "minlength": "Votre nom d'utilisateur doit contenir plus d'un caractère",
+                    "maxlength": "Votre nom d'utilisateur ne peut pas contenir plus de 50 caractères",
+                    "pattern": "Votre nom d'utilisateur ne peut contenir que des lettres minuscules ou des nombres"
+                },
+                "firstname": {
+                    "required": "Votre prénom est requis.",
+                    "minlength": "Votre prénom doit comporter au moins un caractère",
+                    "maxlength": "Votre prénom ne doit pas comporter plus de 50 caractères"
+                },
+                "lastname": {
+                    "required": "Votre nom est requis.",
+                    "minlength": "Votre nom doit comporter au moins un caractère",
+                    "maxlength": "Votre nom ne doit pas comporter plus de 50 caractères"
+                },
+                "society": {
+                    "minlength": "Votre nom de société doit comporter au moins un caractère",
+                    "maxlength": "Votre nom de société ne doit pas comporter plus de 100 caractères"
+                }
+            },
+            "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre e-mail de confirmation.",
+            "error": {
+                "fail": "<strong>Compte non créé!</strong> Merci d'essayer à nouveau plus tard.",
+                "userexists": "<strong>Ce compte utilisateur existe déjà !</strong> Veuillez en choisir un autre.",
+                "emailexists": "<strong>Cet E-mail est déjà utilisé!</strong> Veuillez en choisir un autre."
+            }
+        }
+    }
+}

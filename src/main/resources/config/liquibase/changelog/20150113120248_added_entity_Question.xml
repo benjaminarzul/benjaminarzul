@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Question.
+    -->
+    <changeSet id="20150113120248" author="jhipster">
+        <createTable tableName="T_QUESTION">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="libelle" type="varchar(255)"/>
+            <column name="scenario" type="varchar(255)"/>
+            <column name="quizz_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="quizz_id"
+                                 baseTableName="T_QUESTION"
+                                 constraintName="fk_question_quizz_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_QUIZZ"/>
+
+    </changeSet>
+</databaseChangeLog>

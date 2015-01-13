@@ -1,0 +1,21 @@
+{
+    "togafquizzApp": {
+        "reponse" : {
+            "home": {
+                "title": "Reponses",
+                "createLabel": "Créer un nouveau Reponse",
+                "createOrEditLabel": "Créer ou éditer un Reponse"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Reponse {{ id }} ?"
+            },
+            "detail": {
+                "title": "Reponse"
+            },
+            "libelle": "Libelle",
+            "explication": "Explication",
+            "question": "question"
+        }
+    }
+}
+

@@ -1,0 +1,26 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "debut",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "Debut",
+            "fieldNameUnderscored": "debut"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "fin",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "Fin",
+            "fieldNameUnderscored": "fin"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": true,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "changelogDate": "20150113141523"
+}
