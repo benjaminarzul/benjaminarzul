@@ -13,7 +13,7 @@
                 "title": "Reponse"
             },
             "libelle": "Libelle",
-            "explication": "Explication",
+            "numero": "Numero",
             "question": "question"
         }
     }

@@ -40,6 +40,6 @@ angular.module('togafquizzApp')
         };
 
         $scope.clear = function () {
-            $scope.reponse = {libelle: null, explication: null, id: null};
+            $scope.reponse = {libelle: null, numero: null, id: null};
         };
     });

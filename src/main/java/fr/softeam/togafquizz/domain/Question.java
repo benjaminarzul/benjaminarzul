@@ -1,13 +1,23 @@
 package fr.softeam.togafquizz.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Question.
@@ -17,137 +27,145 @@ import java.util.Set;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Question implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @Column(name = "libelle")
-    private String libelle;
+	@Column(name = "libelle")
+	private String libelle;
 
-    @Column(name = "scenario")
-    private String scenario;
+	@Column(name = "numero")
+	private Integer numero;
 
-    @ManyToOne
-    private Quizz quizz;
+	@Column(name = "scenario")
+	private String scenario;
 
-    @OneToMany(mappedBy = "question")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Reponse> reponses = new HashSet<>();
+	@Column(name = "explication")
+	private String explication;
 
-    @OneToOne
-    private Reponse meilleureReponse;
+	@ManyToOne
+	private Quizz quizz;
 
-    @OneToOne
-    private Reponse secondeMeilleureReponse;
+	@OneToOne
+	private Reponse meilleureReponse;
 
-    @OneToOne
-    private Reponse troisiemeMeilleureReponse;
+	@OneToOne
+	private Reponse secondeMeilleureReponse;
 
-    @OneToMany(mappedBy = "question")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Reponse> moinsBonneReponses = new HashSet<>();
+	@OneToOne
+	private Reponse troisiemeMeilleureReponse;
 
-    public Long getId() {
-        return id;
-    }
+	@OneToMany(mappedBy = "question")
+	@JsonIgnore
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<Reponse> moinsBonnesReponses = new HashSet<>();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getLibelle() {
-        return libelle;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
+	public String getLibelle() {
+		return libelle;
+	}
 
-    public String getScenario() {
-        return scenario;
-    }
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
 
-    public void setScenario(String scenario) {
-        this.scenario = scenario;
-    }
+	public Integer getNumero() {
+		return numero;
+	}
 
-    public Quizz getQuizz() {
-        return quizz;
-    }
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
 
-    public void setQuizz(Quizz quizz) {
-        this.quizz = quizz;
-    }
+	public String getScenario() {
+		return scenario;
+	}
 
-    public Reponse getMeilleureReponse() {
-        return meilleureReponse;
-    }
+	public void setScenario(String scenario) {
+		this.scenario = scenario;
+	}
 
-    public void setMeilleureReponse(Reponse meilleureReponse) {
-        this.meilleureReponse = meilleureReponse;
-    }
+	public String getExplication() {
+		return explication;
+	}
 
-    public Reponse getSecondeMeilleureReponse() {
-        return secondeMeilleureReponse;
-    }
+	public void setExplication(String explication) {
+		this.explication = explication;
+	}
 
-    public void setSecondeMeilleureReponse(Reponse secondeMeilleureReponse) {
-        this.secondeMeilleureReponse = secondeMeilleureReponse;
-    }
+	public Quizz getQuizz() {
+		return quizz;
+	}
 
-    public Reponse getTroisiemeMeilleureReponse() {
-        return troisiemeMeilleureReponse;
-    }
+	public void setQuizz(Quizz quizz) {
+		this.quizz = quizz;
+	}
 
-    public void setTroisiemeMeilleureReponse(Reponse troisiemeMeilleureReponse) {
-        this.troisiemeMeilleureReponse = troisiemeMeilleureReponse;
-    }
+	public Reponse getMeilleureReponse() {
+		return meilleureReponse;
+	}
 
-    public Set<Reponse> getMoinsBonneReponses() {
-        return moinsBonneReponses;
-    }
+	public void setMeilleureReponse(Reponse meilleureReponse) {
+		this.meilleureReponse = meilleureReponse;
+	}
 
-    public void setMoinsBonneReponses(Set<Reponse> moinsBonneReponses) {
-        this.moinsBonneReponses = moinsBonneReponses;
-    }
+	public Reponse getSecondeMeilleureReponse() {
+		return secondeMeilleureReponse;
+	}
 
-    public Set<Reponse> getReponses() {
-        return reponses;
-    }
+	public void setSecondeMeilleureReponse(Reponse secondeMeilleureReponse) {
+		this.secondeMeilleureReponse = secondeMeilleureReponse;
+	}
 
-    public void setReponses(Set<Reponse> reponses) {
-        this.reponses = reponses;
-    }
+	public Reponse getTroisiemeMeilleureReponse() {
+		return troisiemeMeilleureReponse;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setTroisiemeMeilleureReponse(Reponse troisiemeMeilleureReponse) {
+		this.troisiemeMeilleureReponse = troisiemeMeilleureReponse;
+	}
 
-        Question question = (Question) o;
+	public Set<Reponse> getMoinsBonnesReponses() {
+		return moinsBonnesReponses;
+	}
 
-        if (id != null ? !id.equals(question.id) : question.id != null) return false;
+	public void setMoinsBonnesReponses(Set<Reponse> moinsBonnesReponses) {
+		this.moinsBonnesReponses = moinsBonnesReponses;
+	}
 
-        return true;
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-    @Override
-    public int hashCode() {
-        return (int) (id ^ (id >>> 32));
-    }
+		Question question = (Question) o;
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "id=" + id +
-                ", libelle='" + libelle + "'" +
-                ", scenario='" + scenario + "'" +
-                '}';
-    }
+		if (id != null ? !id.equals(question.id) : question.id != null)
+			return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return (int) (id ^ (id >>> 32));
+	}
+
+	@Override
+	public String toString() {
+		return "Question{" + "id=" + id + ", libelle='" + libelle + "'"
+				+ ", numero='" + numero + "'" + ", scenario='" + scenario + "'"
+				+ ", explication='" + explication + "'" + '}';
+	}
 }

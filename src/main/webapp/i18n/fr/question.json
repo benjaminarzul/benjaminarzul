@@ -13,7 +13,9 @@
                 "title": "Question"
             },
             "libelle": "Libelle",
+            "numero": "Numero",
             "scenario": "Scenario",
+            "explication": "Explication",
             "quizz": "quizz",
             "reponse": "reponse"
         }
