@@ -496,8 +496,8 @@
                     <driver>com.mysql.jdbc.Driver</driver>
                     <url>jdbc:mysql://localhost:3306/togafQuizz</url>
                     <defaultSchemaName>togafQuizz</defaultSchemaName>
-                    <username>root</username>
-                    <password></password>
+                    <username>togafQuizz</username>
+                    <password>t0g@fQu1zz</password>
                     <referenceUrl>hibernate:spring:fr.softeam.togafquizz.domain?dialect=org.hibernate.dialect.MySQLInnoDBDialect</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>
