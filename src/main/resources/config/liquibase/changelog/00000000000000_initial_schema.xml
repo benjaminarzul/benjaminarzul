@@ -174,18 +174,28 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="libelle" type="varchar(255)"/>
+            <column name="libelle" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
             <column name="numero" type="integer"/>
-            <column name="duree_en_minutes" type="integer"/>
-            <column name="type" type="integer"/>
+            <column name="duree_en_minutes" type="integer">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="type" type="integer">
+            	<constraints nullable="false"/>
+            </column>
         </createTable>
 
         <createTable tableName="T_REPONSE">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="libelle" type="varchar(255)"/>
-            <column name="numero" type="integer"/>
+            <column name="libelle" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="integer">
+            	<constraints nullable="false"/>
+            </column>
             <column name="question_id" type="bigint"/>
         </createTable>
 
@@ -193,10 +203,16 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="libelle" type="varchar(255)"/>
-            <column name="scenario" type="varchar(255)"/>
-            <column name="numero" type="integer"/>
-            <column name="explication" type="varchar(255)"/>
+            <column name="libelle" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="integer">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="scenario" type="clob">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="explication" type="clob"/>
             <column name="quizz_id" type="bigint"/>
             <column name="meilleureReponse_id" type="bigint"/>
             <column name="secondeMeilleureReponse_id" type="bigint"/>
@@ -219,7 +235,9 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="pourcentage_reussite" type="integer"/>
+            <column name="pourcentage_reussite" type="integer">
+            	<constraints nullable="false"/>
+            </column>
             <column name="user_id" type="bigint"/>
             <column name="quizz_id" type="bigint"/>
         </createTable>
@@ -276,5 +294,5 @@
 								 referencedColumnNames="id"
 								 referencedTableName="T_SESSION"/>
     </changeSet>
-    
+
 </databaseChangeLog>

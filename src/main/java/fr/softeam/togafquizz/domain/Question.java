@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -31,16 +33,20 @@ public class Question implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "libelle")
+	@Column(length = 50, nullable = false)
+	@NotNull
+	@Size(min = 1, max = 50)
 	private String libelle;
 
-	@Column(name = "numero")
+	@Column(nullable = false)
+	@NotNull
 	private Integer numero;
 
-	@Column(name = "scenario")
+	@Column(length = 3200, nullable = false)
+	@NotNull
 	private String scenario;
 
-	@Column(name = "explication")
+	@Column(length = 3200)
 	private String explication;
 
 	@ManyToOne
