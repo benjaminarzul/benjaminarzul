@@ -1,2 +1,4 @@
 id;libelle;numero;duree_en_minutes;type
-1;quizz1;1;60;1
+1;Quizz Type 1 n°1;1;10;1
+2;Quizz Type 1 n°2;2;5;1
+3;Quizz Type 2 n°3;3;15;2

@@ -293,6 +293,11 @@
 								 constraintName="fk_user_session_id"
 								 referencedColumnNames="id"
 								 referencedTableName="T_SESSION"/>
+
+		<loadData encoding="UTF-8"
+                  file="config/liquibase/quizz.csv"
+                  separator=";"
+                  tableName="T_QUIZZ"/>
     </changeSet>
 
 </databaseChangeLog>
