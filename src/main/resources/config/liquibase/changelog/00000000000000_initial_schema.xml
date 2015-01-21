@@ -175,7 +175,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="libelle" type="varchar(50)">
-                <constraints nullable="false"/>
+            	<constraints unique="true" nullable="false"/>
             </column>
             <column name="numero" type="integer"/>
             <column name="duree_en_minutes" type="integer">
