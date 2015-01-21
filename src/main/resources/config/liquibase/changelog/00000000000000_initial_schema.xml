@@ -165,5 +165,116 @@
                                  referencedColumnNames="event_id"
                                  referencedTableName="T_PERSISTENT_AUDIT_EVENT"/>
     </changeSet>
+
+	<!--
+		togafQuizz core tables.
+	-->    
+    <changeSet id="00000000000002" author="obarsot">
+    	<createTable tableName="T_QUIZZ">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="libelle" type="varchar(255)"/>
+            <column name="numero" type="integer"/>
+            <column name="duree_en_minutes" type="integer"/>
+            <column name="type" type="integer"/>
+        </createTable>
+
+        <createTable tableName="T_REPONSE">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="libelle" type="varchar(255)"/>
+            <column name="numero" type="integer"/>
+            <column name="question_id" type="bigint"/>
+        </createTable>
+
+        <createTable tableName="T_QUESTION">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="libelle" type="varchar(255)"/>
+            <column name="scenario" type="varchar(255)"/>
+            <column name="numero" type="integer"/>
+            <column name="explication" type="varchar(255)"/>
+            <column name="quizz_id" type="bigint"/>
+            <column name="meilleureReponse_id" type="bigint"/>
+            <column name="secondeMeilleureReponse_id" type="bigint"/>
+            <column name="troisiemeMeilleureReponse_id" type="bigint"/>
+        </createTable>
+
+        <createTable tableName="T_SESSION">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="debut" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="fin" type="date">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="T_RESULTAT">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="pourcentage_reussite" type="integer"/>
+            <column name="user_id" type="bigint"/>
+            <column name="quizz_id" type="bigint"/>
+        </createTable>
+
+		<addColumn tableName="T_USER">
+            <column name="session_id" type="bigint"/>
+        </addColumn>
+
+		<addForeignKeyConstraint baseColumnNames="quizz_id"
+                                 baseTableName="T_QUESTION"
+                                 constraintName="fk_question_quizz_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_QUIZZ"/>
+
+        <addForeignKeyConstraint baseColumnNames="question_id"
+								 baseTableName="T_REPONSE"
+								 constraintName="fk_reponse_question_id"
+								 referencedColumnNames="id"
+								 referencedTableName="T_QUESTION"/>
+
+		<addForeignKeyConstraint baseColumnNames="meilleureReponse_id"
+								 baseTableName="T_QUESTION"
+								 constraintName="fk_question_meilleureReponse_id"
+								 referencedColumnNames="id"
+								 referencedTableName="T_REPONSE"/>
+
+		<addForeignKeyConstraint baseColumnNames="secondeMeilleureReponse_id"
+								 baseTableName="T_QUESTION"
+								 constraintName="fk_question_secondeMeilleureReponse_id"
+								 referencedColumnNames="id"
+								 referencedTableName="T_REPONSE"/>
+
+		<addForeignKeyConstraint baseColumnNames="troisiemeMeilleureReponse_id"
+								 baseTableName="T_QUESTION"
+								 constraintName="fk_question_troisiemeMeilleureReponse_id"
+								 referencedColumnNames="id"
+								 referencedTableName="T_REPONSE"/>
+
+		<addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="T_RESULTAT"
+                                 constraintName="fk_resultat_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_USER"/>
+
+        <addForeignKeyConstraint baseColumnNames="quizz_id"
+                                 baseTableName="T_RESULTAT"
+                                 constraintName="fk_resultat_quizz_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_QUIZZ"/>
+
+		<addForeignKeyConstraint baseColumnNames="session_id"
+								 baseTableName="T_USER"
+								 constraintName="fk_user_session_id"
+								 referencedColumnNames="id"
+								 referencedTableName="T_SESSION"/>
+    </changeSet>
     
 </databaseChangeLog>
