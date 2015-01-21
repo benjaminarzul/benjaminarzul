@@ -298,6 +298,11 @@
                   file="config/liquibase/quizz.csv"
                   separator=";"
                   tableName="T_QUIZZ"/>
+
+		<loadData encoding="UTF-8"
+                  file="config/liquibase/sessions.csv"
+                  separator=";"
+                  tableName="T_SESSION"/>
     </changeSet>
 
 </databaseChangeLog>
