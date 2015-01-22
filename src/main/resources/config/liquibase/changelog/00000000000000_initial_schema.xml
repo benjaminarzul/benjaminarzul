@@ -325,6 +325,11 @@
 		<loadData encoding="UTF-8"
                   file="config/liquibase/stagiaires_authorities.csv"
                   separator=";"
-                  tableName="T_USER_AUTHORITY"/>                  
+                  tableName="T_USER_AUTHORITY"/>
+
+		<loadData encoding="UTF-8"
+                  file="config/liquibase/resultats.csv"
+                  separator=";"
+                  tableName="T_RESULTAT"/>
     </changeSet>
 </databaseChangeLog>
