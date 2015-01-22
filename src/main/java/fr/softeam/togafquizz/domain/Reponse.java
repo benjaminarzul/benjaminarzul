@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -27,9 +26,8 @@ public class Reponse implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(length = 50, nullable = false)
+	@Column(nullable = false)
 	@NotNull
-	@Size(min = 1, max = 50)
 	private String libelle;
 
 	@Column(nullable = false)

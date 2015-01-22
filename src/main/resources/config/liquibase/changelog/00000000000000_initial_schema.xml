@@ -190,7 +190,7 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="libelle" type="varchar(50)">
+            <column name="libelle" type="clob">
                 <constraints nullable="false"/>
             </column>
             <column name="numero" type="integer">
@@ -203,7 +203,7 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="libelle" type="varchar(50)">
+            <column name="libelle" type="clob">
                 <constraints nullable="false"/>
             </column>
             <column name="numero" type="integer">
@@ -302,7 +302,7 @@
 		<loadData encoding="UTF-8"
                   file="config/liquibase/sessions.csv"
                   separator=";"
-                  tableName="T_SESSION"/>
+                  tableName="T_SESSION"/>                  
     </changeSet>
 
 </databaseChangeLog>
