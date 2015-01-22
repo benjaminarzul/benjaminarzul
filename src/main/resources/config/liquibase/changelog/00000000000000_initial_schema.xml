@@ -313,5 +313,18 @@
                   file="config/liquibase/reponses.csv"
                   separator=";"
                   tableName="T_REPONSE"/>
+
+		<loadData encoding="UTF-8"
+                  file="config/liquibase/stagiaires.csv"
+                  separator=";"
+                  tableName="T_USER">
+			<column name="activated" type="boolean"/>
+            <column name="created_date" type="timestamp"/>
+		</loadData>
+
+		<loadData encoding="UTF-8"
+                  file="config/liquibase/stagiaires_authorities.csv"
+                  separator=";"
+                  tableName="T_USER_AUTHORITY"/>                  
     </changeSet>
 </databaseChangeLog>
