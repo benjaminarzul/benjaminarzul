@@ -1,8 +1,6 @@
 package fr.softeam.togafquizz.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,15 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Question.
@@ -58,11 +53,6 @@ public class Question implements Serializable {
 
 	@OneToOne
 	private Reponse troisiemeMeilleureReponse;
-
-	@OneToMany(mappedBy = "question")
-	@JsonIgnore
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private Set<Reponse> moinsBonnesReponses = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -134,14 +124,6 @@ public class Question implements Serializable {
 
 	public void setTroisiemeMeilleureReponse(Reponse troisiemeMeilleureReponse) {
 		this.troisiemeMeilleureReponse = troisiemeMeilleureReponse;
-	}
-
-	public Set<Reponse> getMoinsBonnesReponses() {
-		return moinsBonnesReponses;
-	}
-
-	public void setMoinsBonnesReponses(Set<Reponse> moinsBonnesReponses) {
-		this.moinsBonnesReponses = moinsBonnesReponses;
 	}
 
 	@Override
