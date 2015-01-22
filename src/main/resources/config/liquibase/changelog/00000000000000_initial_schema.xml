@@ -307,6 +307,11 @@
 		<loadData encoding="UTF-8"
                   file="config/liquibase/questions.csv"
                   separator=";"
-                  tableName="T_QUESTION"/>                  
+                  tableName="T_QUESTION"/>
+
+		<loadData encoding="UTF-8"
+                  file="config/liquibase/reponses.csv"
+                  separator=";"
+                  tableName="T_REPONSE"/>
     </changeSet>
 </databaseChangeLog>
