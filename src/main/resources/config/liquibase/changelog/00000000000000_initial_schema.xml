@@ -314,6 +314,12 @@
                   separator=";"
                   tableName="T_REPONSE"/>
 
+		<loadUpdateData encoding="UTF-8"
+						file="config/liquibase/questions_reponses.csv"
+						primaryKey="id"
+						separator=";"
+						tableName="T_QUESTION"/>
+
 		<loadData encoding="UTF-8"
                   file="config/liquibase/stagiaires.csv"
                   separator=";"
