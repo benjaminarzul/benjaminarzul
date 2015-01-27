@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -27,6 +27,7 @@ public class Reponse implements Serializable {
 	private Long id;
 
 	@Column(nullable = false)
+	@Lob
 	@NotNull
 	private String libelle;
 
@@ -34,66 +35,94 @@ public class Reponse implements Serializable {
 	@NotNull
 	private Integer numero;
 
-	@ManyToOne
-	private Question question;
-
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long pId) {
+		this.id = pId;
 	}
 
 	public String getLibelle() {
-		return libelle;
+		return this.libelle;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setLibelle(String pLibelle) {
+		this.libelle = pLibelle;
 	}
 
 	public Integer getNumero() {
-		return numero;
+		return this.numero;
 	}
 
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-
-	public Question getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(Question question) {
-		this.question = question;
+	public void setNumero(Integer pNumero) {
+		this.numero = pNumero;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((this.libelle == null) ? 0 : this.libelle.hashCode());
+		result = prime * result
+				+ ((this.numero == null) ? 0 : this.numero.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object pObject) {
+		if (this == pObject) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+
+		if (pObject == null) {
 			return false;
 		}
 
-		Reponse reponse = (Reponse) o;
-
-		if (id != null ? !id.equals(reponse.id) : reponse.id != null)
+		if (getClass() != pObject.getClass()) {
 			return false;
+		}
+
+		Reponse other = (Reponse) pObject;
+
+		if (this.libelle == null) {
+			if (other.libelle != null) {
+				return false;
+			}
+		} else if (!this.libelle.equals(other.libelle)) {
+			return false;
+		}
+
+		if (this.numero == null) {
+			if (other.numero != null) {
+				return false;
+			}
+		} else if (!this.numero.equals(other.numero)) {
+			return false;
+		}
 
 		return true;
 	}
 
 	@Override
-	public int hashCode() {
-		return (int) (id ^ (id >>> 32));
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("Reponse { ");
+		builder.append("id=").append(this.id);
+		builder.append(", libelle=").append(this.libelle);
+		builder.append(", numero=").append(this.numero);
+		builder.append(" }");
+
+		return builder.toString();
 	}
 
-	@Override
-	public String toString() {
-		return "Reponse{" + "id=" + id + ", libelle='" + libelle + "'"
-				+ ", numero='" + numero + "'" + '}';
+	public String toStringSimplifie() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(this.id).append('-').append(this.libelle);
+
+		return builder.toString();
 	}
 }

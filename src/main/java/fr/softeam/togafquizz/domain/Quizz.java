@@ -44,71 +44,97 @@ public class Quizz implements Serializable {
 	private Integer type;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long pId) {
+		this.id = pId;
 	}
 
 	public String getLibelle() {
-		return libelle;
+		return this.libelle;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setLibelle(String pLibelle) {
+		this.libelle = pLibelle;
 	}
 
 	public Integer getNumero() {
-		return numero;
+		return this.numero;
 	}
 
-	public void setNumero(Integer numero) {
-		this.numero = numero;
+	public void setNumero(Integer pNumero) {
+		this.numero = pNumero;
 	}
 
 	public Integer getDureeEnMinutes() {
-		return dureeEnMinutes;
+		return this.dureeEnMinutes;
 	}
 
-	public void setDureeEnMinutes(Integer dureeEnMinutes) {
-		this.dureeEnMinutes = dureeEnMinutes;
+	public void setDureeEnMinutes(Integer pDureeEnMinutes) {
+		this.dureeEnMinutes = pDureeEnMinutes;
 	}
 
 	public Integer getType() {
-		return type;
+		return this.type;
 	}
 
-	public void setType(Integer type) {
-		this.type = type;
+	public void setType(Integer pType) {
+		this.type = pType;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((this.libelle == null) ? 0 : libelle.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object pObject) {
+		if (this == pObject) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+
+		if (pObject == null) {
 			return false;
 		}
 
-		Quizz quizz = (Quizz) o;
-
-		if (id != null ? !id.equals(quizz.id) : quizz.id != null)
+		if (getClass() != pObject.getClass()) {
 			return false;
+		}
+
+		Quizz other = (Quizz) pObject;
+
+		if (this.libelle == null) {
+			if (other.libelle != null) {
+				return false;
+			}
+		} else if (!this.libelle.equals(other.libelle)) {
+			return false;
+		}
 
 		return true;
 	}
 
 	@Override
-	public int hashCode() {
-		return (int) (id ^ (id >>> 32));
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("Quizz { ");
+		builder.append("id=").append(this.id);
+		builder.append(", libelle=").append(this.libelle);
+		builder.append(", numero=").append(this.numero);
+		builder.append(", dureeEnMinutes=").append(this.dureeEnMinutes);
+		builder.append(", type=").append(this.type);
+		builder.append(" }");
+
+		return builder.toString();
 	}
 
-	@Override
-	public String toString() {
-		return "Quizz{" + "id=" + id + ", libelle='" + libelle + "'"
-				+ ", numero='" + numero + "'" + ", dureeEnMinutes='"
-				+ dureeEnMinutes + "'" + ", type='" + type + "'" + '}';
+	public String toStringSimplifie() {
+		return this.libelle;
 	}
 }

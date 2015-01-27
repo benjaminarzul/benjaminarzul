@@ -48,54 +48,93 @@ public class Session implements Serializable {
 	private LocalDate fin;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long pId) {
+		this.id = pId;
 	}
 
 	public LocalDate getDebut() {
-		return debut;
+		return this.debut;
 	}
 
-	public void setDebut(LocalDate debut) {
-		this.debut = debut;
+	public void setDebut(LocalDate pDebut) {
+		this.debut = pDebut;
 	}
 
 	public LocalDate getFin() {
-		return fin;
+		return this.fin;
 	}
 
-	public void setFin(LocalDate fin) {
-		this.fin = fin;
+	public void setFin(LocalDate pFin) {
+		this.fin = pFin;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.debut == null) ? 0 : debut.hashCode());
+		result = prime * result + ((this.fin == null) ? 0 : fin.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object pObject) {
+		if (this == pObject) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+
+		if (pObject == null) {
 			return false;
 		}
 
-		Session session = (Session) o;
-
-		if (id != null ? !id.equals(session.id) : session.id != null)
+		if (getClass() != pObject.getClass()) {
 			return false;
+		}
+
+		Session other = (Session) pObject;
+
+		if (this.debut == null) {
+			if (other.debut != null) {
+				return false;
+			}
+		} else if (!this.debut.equals(other.debut)) {
+			return false;
+		}
+
+		if (this.fin == null) {
+			if (other.fin != null) {
+				return false;
+			}
+		} else if (!this.fin.equals(other.fin)) {
+			return false;
+		}
 
 		return true;
 	}
 
 	@Override
-	public int hashCode() {
-		return (int) (id ^ (id >>> 32));
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("Session { ");
+		builder.append("id=").append(this.id);
+		builder.append(", debut=").append(this.debut);
+		builder.append(", fin=").append(this.fin);
+		builder.append(" }");
+
+		return builder.toString();
 	}
 
-	@Override
-	public String toString() {
-		return "Session{" + "id=" + id + ", debut='" + debut + "'" + ", fin='"
-				+ fin + "'" + '}';
+	public String toStringSimplifie() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(this.id).append('-').append(this.debut).append('/')
+				.append(this.fin);
+
+		return builder.toString();
 	}
+
 }

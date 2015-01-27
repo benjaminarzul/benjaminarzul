@@ -1,12 +1,19 @@
 package fr.softeam.togafquizz.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -14,6 +21,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.util.CollectionUtils;
 
 /**
  * A Question.
@@ -28,6 +36,7 @@ public class Question implements Serializable {
 	private Long id;
 
 	@Column(nullable = false)
+	@Lob
 	@NotNull
 	private String libelle;
 
@@ -36,10 +45,12 @@ public class Question implements Serializable {
 	private Integer numero;
 
 	@Column(nullable = false)
+	@Lob
 	@NotNull
 	private String scenario;
 
 	@Column
+	@Lob
 	private String explication;
 
 	@ManyToOne
@@ -54,104 +65,198 @@ public class Question implements Serializable {
 	@OneToOne
 	private Reponse troisiemeMeilleureReponse;
 
+	@JoinTable(name = "T_QUESTION_REPONSE", joinColumns = { @JoinColumn(name = "question_id") }, inverseJoinColumns = { @JoinColumn(name = "reponse_id") })
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Set<Reponse> reponses = new HashSet<Reponse>();
+
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long pId) {
+		this.id = pId;
 	}
 
 	public String getLibelle() {
-		return libelle;
+		return this.libelle;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void setLibelle(String pLibelle) {
+		this.libelle = pLibelle;
 	}
 
 	public Integer getNumero() {
-		return numero;
+		return this.numero;
 	}
 
-	public void setNumero(Integer numero) {
-		this.numero = numero;
+	public void setNumero(Integer pNumero) {
+		this.numero = pNumero;
 	}
 
 	public String getScenario() {
-		return scenario;
+		return this.scenario;
 	}
 
-	public void setScenario(String scenario) {
-		this.scenario = scenario;
+	public void setScenario(String pScenario) {
+		this.scenario = pScenario;
 	}
 
 	public String getExplication() {
-		return explication;
+		return this.explication;
 	}
 
-	public void setExplication(String explication) {
-		this.explication = explication;
+	public void setExplication(String pExplication) {
+		this.explication = pExplication;
 	}
 
 	public Quizz getQuizz() {
-		return quizz;
+		return this.quizz;
 	}
 
-	public void setQuizz(Quizz quizz) {
-		this.quizz = quizz;
+	public void setQuizz(Quizz pQuizz) {
+		this.quizz = pQuizz;
 	}
 
 	public Reponse getMeilleureReponse() {
-		return meilleureReponse;
+		return this.meilleureReponse;
 	}
 
-	public void setMeilleureReponse(Reponse meilleureReponse) {
-		this.meilleureReponse = meilleureReponse;
+	public void setMeilleureReponse(Reponse pMeilleureReponse) {
+		this.meilleureReponse = pMeilleureReponse;
 	}
 
 	public Reponse getSecondeMeilleureReponse() {
-		return secondeMeilleureReponse;
+		return this.secondeMeilleureReponse;
 	}
 
-	public void setSecondeMeilleureReponse(Reponse secondeMeilleureReponse) {
-		this.secondeMeilleureReponse = secondeMeilleureReponse;
+	public void setSecondeMeilleureReponse(Reponse pSecondeMeilleureReponse) {
+		this.secondeMeilleureReponse = pSecondeMeilleureReponse;
 	}
 
 	public Reponse getTroisiemeMeilleureReponse() {
-		return troisiemeMeilleureReponse;
+		return this.troisiemeMeilleureReponse;
 	}
 
-	public void setTroisiemeMeilleureReponse(Reponse troisiemeMeilleureReponse) {
-		this.troisiemeMeilleureReponse = troisiemeMeilleureReponse;
+	public void setTroisiemeMeilleureReponse(Reponse pTroisiemeMeilleureReponse) {
+		this.troisiemeMeilleureReponse = pTroisiemeMeilleureReponse;
+	}
+
+	public Set<Reponse> getReponses() {
+		return this.reponses;
+	}
+
+	public void setReponses(Set<Reponse> pSetReponse) {
+		this.reponses = pSetReponse;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((this.libelle == null) ? 0 : this.libelle.hashCode());
+		result = prime * result
+				+ ((this.numero == null) ? 0 : this.numero.hashCode());
+		result = prime * result
+				+ ((this.quizz == null) ? 0 : this.quizz.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object pObject) {
+		if (this == pObject) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+
+		if (pObject == null) {
 			return false;
 		}
 
-		Question question = (Question) o;
-
-		if (id != null ? !id.equals(question.id) : question.id != null)
+		if (getClass() != pObject.getClass()) {
 			return false;
+		}
+
+		Question other = (Question) pObject;
+
+		if (this.libelle == null) {
+			if (other.libelle != null) {
+				return false;
+			}
+		} else if (!this.libelle.equals(other.libelle)) {
+			return false;
+		}
+
+		if (this.numero == null) {
+			if (other.numero != null) {
+				return false;
+			}
+		} else if (!this.numero.equals(other.numero)) {
+			return false;
+		}
+
+		if (this.quizz == null) {
+			if (other.quizz != null) {
+				return false;
+			}
+		} else if (!this.quizz.equals(other.quizz)) {
+			return false;
+		}
 
 		return true;
 	}
 
 	@Override
-	public int hashCode() {
-		return (int) (id ^ (id >>> 32));
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("Question { ");
+		builder.append("id=").append(this.id);
+		builder.append(", libelle=").append(this.libelle);
+		builder.append(", numero=").append(this.numero);
+		builder.append(", scenario=").append(this.scenario);
+		builder.append(", explication=").append(this.explication);
+		builder.append(", quizz=")
+				.append(this.quizz == null ? "<aucun>" : this.quizz
+						.toStringSimplifie());
+		builder.append(", meilleureReponse=").append(
+				this.meilleureReponse == null ? "<aucune>"
+						: this.meilleureReponse.toStringSimplifie());
+		builder.append(", secondeMeilleureReponse=").append(
+				this.secondeMeilleureReponse == null ? "<aucune>"
+						: this.secondeMeilleureReponse.toStringSimplifie());
+		builder.append(", troisiemeMeilleureReponse=").append(
+				this.troisiemeMeilleureReponse == null ? "<aucune>"
+						: this.troisiemeMeilleureReponse.toStringSimplifie());
+
+		// réponses
+		builder.append(", reponses=");
+
+		if (CollectionUtils.isEmpty(this.reponses)) {
+			builder.append("<aucune>");
+		} else {
+			builder.append("{ nombre=").append(this.reponses.size());
+			builder.append(", donnees=[ ");
+
+			for (Reponse curReponse : this.reponses) {
+				builder.append(curReponse.toStringSimplifie());
+				builder.append(", ");
+			}
+
+			builder.delete(builder.length() - ", ".length(), builder.length());
+			builder.append(" ] }");
+		}
+
+		builder.append(" }");
+
+		return builder.toString();
 	}
 
-	@Override
-	public String toString() {
-		return "Question{" + "id=" + id + ", libelle='" + libelle + "'"
-				+ ", numero='" + numero + "'" + ", scenario='" + scenario + "'"
-				+ ", explication='" + explication + "'" + '}';
+	public String toStringSimplifie() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(this.id).append('-').append(this.libelle);
+
+		return builder.toString();
 	}
+
 }

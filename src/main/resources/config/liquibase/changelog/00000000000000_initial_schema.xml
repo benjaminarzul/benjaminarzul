@@ -112,7 +112,6 @@
             <column name="activated" type="boolean"/>
             <column name="created_date" type="timestamp"/>
         </loadData>
-        <dropDefaultValue tableName="T_USER" columnName="created_date" columnDataType="datetime"/>
 
         <loadData encoding="UTF-8"
                   file="config/liquibase/authorities.csv"
@@ -196,7 +195,6 @@
             <column name="numero" type="integer">
             	<constraints nullable="false"/>
             </column>
-            <column name="question_id" type="bigint"/>
         </createTable>
 
         <createTable tableName="T_QUESTION">
@@ -218,6 +216,17 @@
             <column name="secondeMeilleureReponse_id" type="bigint"/>
             <column name="troisiemeMeilleureReponse_id" type="bigint"/>
         </createTable>
+
+        <createTable tableName="T_QUESTION_REPONSE">
+			<column name="question_id" type="bigint">
+				<constraints nullable="false"/>
+            </column>
+            <column name="reponse_id" type="bigint">
+				<constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="question_id, reponse_id" tableName="T_QUESTION_REPONSE"/>
 
         <createTable tableName="T_SESSION">
             <column name="id" type="bigint" autoIncrement="true">
@@ -252,12 +261,6 @@
                                  referencedColumnNames="id"
                                  referencedTableName="T_QUIZZ"/>
 
-        <addForeignKeyConstraint baseColumnNames="question_id"
-								 baseTableName="T_REPONSE"
-								 constraintName="fk_reponse_question_id"
-								 referencedColumnNames="id"
-								 referencedTableName="T_QUESTION"/>
-
 		<addForeignKeyConstraint baseColumnNames="meilleureReponse_id"
 								 baseTableName="T_QUESTION"
 								 constraintName="fk_question_meilleureReponse_id"
@@ -273,6 +276,18 @@
 		<addForeignKeyConstraint baseColumnNames="troisiemeMeilleureReponse_id"
 								 baseTableName="T_QUESTION"
 								 constraintName="fk_question_troisiemeMeilleureReponse_id"
+								 referencedColumnNames="id"
+								 referencedTableName="T_REPONSE"/>
+
+		<addForeignKeyConstraint baseColumnNames="question_id"
+								baseTableName="T_QUESTION_REPONSE"
+								constraintName="fk_question_reponse_question_id"
+								referencedColumnNames="id"
+								referencedTableName="T_QUESTION"/>
+
+		<addForeignKeyConstraint baseColumnNames="reponse_id"
+								 baseTableName="T_QUESTION_REPONSE"
+								 constraintName="fk_question_reponse_reponse_id"
 								 referencedColumnNames="id"
 								 referencedTableName="T_REPONSE"/>
 
@@ -314,8 +329,13 @@
                   separator=";"
                   tableName="T_REPONSE"/>
 
+		<loadData encoding="UTF-8"
+                  file="config/liquibase/questions_reponses.csv"
+                  separator=";"
+                  tableName="T_QUESTION_REPONSE"/>
+
 		<loadUpdateData encoding="UTF-8"
-						file="config/liquibase/questions_reponses.csv"
+						file="config/liquibase/questions_meilleures_reponses.csv"
 						primaryKey="id"
 						separator=";"
 						tableName="T_QUESTION"/>
@@ -332,6 +352,8 @@
                   file="config/liquibase/stagiaires_authorities.csv"
                   separator=";"
                   tableName="T_USER_AUTHORITY"/>
+
+		<dropDefaultValue tableName="T_USER" columnName="created_date" columnDataType="datetime"/>
 
 		<loadData encoding="UTF-8"
                   file="config/liquibase/resultats.csv"

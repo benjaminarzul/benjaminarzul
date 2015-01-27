@@ -37,62 +37,111 @@ public class Resultat implements Serializable {
 	private Quizz quizz;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long pId) {
+		this.id = pId;
 	}
 
 	public Integer getPourcentageReussite() {
-		return pourcentageReussite;
+		return this.pourcentageReussite;
 	}
 
-	public void setPourcentageReussite(Integer pourcentageReussite) {
-		this.pourcentageReussite = pourcentageReussite;
+	public void setPourcentageReussite(Integer pPourcentageReussite) {
+		this.pourcentageReussite = pPourcentageReussite;
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(User pUser) {
+		this.user = pUser;
 	}
 
 	public Quizz getQuizz() {
-		return quizz;
+		return this.quizz;
 	}
 
-	public void setQuizz(Quizz quizz) {
-		this.quizz = quizz;
+	public void setQuizz(Quizz pQuizz) {
+		this.quizz = pQuizz;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((this.pourcentageReussite == null) ? 0
+						: this.pourcentageReussite.hashCode());
+		result = prime * result
+				+ ((this.quizz == null) ? 0 : this.quizz.hashCode());
+		result = prime * result
+				+ ((this.user == null) ? 0 : this.user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object pObject) {
+		if (this == pObject) {
 			return true;
 		}
-		if (o == null || getClass() != o.getClass()) {
+
+		if (pObject == null) {
 			return false;
 		}
 
-		Resultat resultat = (Resultat) o;
-
-		if (id != null ? !id.equals(resultat.id) : resultat.id != null)
+		if (getClass() != pObject.getClass()) {
 			return false;
+		}
+
+		Resultat other = (Resultat) pObject;
+
+		if (this.pourcentageReussite == null) {
+			if (other.pourcentageReussite != null) {
+				return false;
+			}
+		} else if (!this.pourcentageReussite.equals(other.pourcentageReussite)) {
+			return false;
+		}
+
+		if (this.quizz == null) {
+			if (other.quizz != null) {
+				return false;
+			}
+		} else if (!this.quizz.equals(other.quizz)) {
+			return false;
+		}
+
+		if (this.user == null) {
+			if (other.user != null) {
+				return false;
+			}
+		} else if (!this.user.equals(other.user)) {
+			return false;
+		}
 
 		return true;
 	}
 
 	@Override
-	public int hashCode() {
-		return (int) (id ^ (id >>> 32));
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("Resultat { ");
+		builder.append("id=").append(this.id);
+		builder.append(", pourcentageReussite=").append(
+				this.pourcentageReussite);
+		builder.append(", quizz=")
+				.append(this.quizz == null ? "<aucun>" : this.quizz
+						.toStringSimplifie());
+		builder.append(", user=").append(
+				this.user == null ? "<aucun>" : this.user.toStringSimplifie());
+		builder.append(" }");
+
+		return builder.toString();
 	}
 
-	@Override
-	public String toString() {
-		return "Resultat{" + "id=" + id + ", pourcentageReussite='"
-				+ pourcentageReussite + "'" + '}';
-	}
 }
