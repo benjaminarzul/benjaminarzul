@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -42,8 +43,13 @@ import fr.softeam.togafquizz.repository.ReponseRepository;
 @IntegrationTest
 public class ReponseResourceTest {
 
+	private static final int NUMBER_OF_INITIAL_REPONSES = 4;
+
 	private static final String DEFAULT_LIBELLE = "SAMPLE_TEXT";
 	private static final String UPDATED_LIBELLE = "UPDATED_TEXT";
+
+	private static final Integer DEFAULT_NUMERO = 0;
+	private static final Integer UPDATED_NUMERO = 1;
 
 	@Inject
 	private ReponseRepository reponseRepository;
@@ -66,13 +72,15 @@ public class ReponseResourceTest {
 	public void initTest() {
 		reponse = new Reponse();
 		reponse.setLibelle(DEFAULT_LIBELLE);
+		reponse.setNumero(DEFAULT_NUMERO);
 	}
 
 	@Test
 	@Transactional
 	public void createReponse() throws Exception {
 		// Validate the database is empty
-		assertThat(reponseRepository.findAll()).hasSize(0);
+		assertThat(reponseRepository.findAll()).hasSize(
+				NUMBER_OF_INITIAL_REPONSES);
 
 		// Create the Reponse
 		restReponseMockMvc.perform(
@@ -83,9 +91,17 @@ public class ReponseResourceTest {
 
 		// Validate the Reponse in the database
 		List<Reponse> reponses = reponseRepository.findAll();
-		assertThat(reponses).hasSize(1);
-		Reponse testReponse = reponses.iterator().next();
+		assertThat(reponses).hasSize(NUMBER_OF_INITIAL_REPONSES + 1);
+
+		Reponse testReponse = null;
+		Iterator<Reponse> reponseIt = reponses.iterator();
+
+		while (reponseIt.hasNext()) {
+			testReponse = reponseIt.next();
+		}
+
 		assertThat(testReponse.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
+		assertThat(testReponse.getNumero()).isEqualTo(DEFAULT_NUMERO);
 	}
 
 	@Test
@@ -100,10 +116,17 @@ public class ReponseResourceTest {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 				.andExpect(
-						jsonPath("$.[0].id").value(reponse.getId().intValue()))
+						jsonPath("$.[" + NUMBER_OF_INITIAL_REPONSES + "].id")
+								.value(reponse.getId().intValue()))
 				.andExpect(
-						jsonPath("$.[0].libelle").value(
-								DEFAULT_LIBELLE.toString()));
+						jsonPath(
+								"$.[" + NUMBER_OF_INITIAL_REPONSES
+										+ "].libelle").value(
+								DEFAULT_LIBELLE.toString()))
+				.andExpect(
+						jsonPath(
+								"$.[" + NUMBER_OF_INITIAL_REPONSES + "].numero")
+								.value(DEFAULT_NUMERO));
 	}
 
 	@Test
@@ -119,14 +142,15 @@ public class ReponseResourceTest {
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 				.andExpect(jsonPath("$.id").value(reponse.getId().intValue()))
 				.andExpect(
-						jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()));
+						jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()))
+				.andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO));
 	}
 
 	@Test
 	@Transactional
 	public void getNonExistingReponse() throws Exception {
 		// Get the reponse
-		restReponseMockMvc.perform(get("/api/reponses/{id}", 1L)).andExpect(
+		restReponseMockMvc.perform(get("/api/reponses/{id}", 99L)).andExpect(
 				status().isNotFound());
 	}
 
@@ -138,6 +162,7 @@ public class ReponseResourceTest {
 
 		// Update the reponse
 		reponse.setLibelle(UPDATED_LIBELLE);
+		reponse.setNumero(UPDATED_NUMERO);
 		restReponseMockMvc.perform(
 				post("/api/reponses").contentType(
 						TestUtil.APPLICATION_JSON_UTF8).content(
@@ -146,9 +171,17 @@ public class ReponseResourceTest {
 
 		// Validate the Reponse in the database
 		List<Reponse> reponses = reponseRepository.findAll();
-		assertThat(reponses).hasSize(1);
-		Reponse testReponse = reponses.iterator().next();
+		assertThat(reponses).hasSize(NUMBER_OF_INITIAL_REPONSES + 1);
+
+		Reponse testReponse = null;
+		Iterator<Reponse> reponseIt = reponses.iterator();
+
+		while (reponseIt.hasNext()) {
+			testReponse = reponseIt.next();
+		}
+
 		assertThat(testReponse.getLibelle()).isEqualTo(UPDATED_LIBELLE);
+		assertThat(testReponse.getNumero()).isEqualTo(UPDATED_NUMERO);
 	}
 
 	@Test
@@ -165,6 +198,6 @@ public class ReponseResourceTest {
 
 		// Validate the database is empty
 		List<Reponse> reponses = reponseRepository.findAll();
-		assertThat(reponses).hasSize(0);
+		assertThat(reponses).hasSize(NUMBER_OF_INITIAL_REPONSES);
 	}
 }

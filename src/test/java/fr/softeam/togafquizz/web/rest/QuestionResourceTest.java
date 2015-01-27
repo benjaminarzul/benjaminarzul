@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -42,10 +43,17 @@ import fr.softeam.togafquizz.repository.QuestionRepository;
 @IntegrationTest
 public class QuestionResourceTest {
 
+	private static final int NUMBER_OF_INITIAL_QUESTIONS = 12;
+
 	private static final String DEFAULT_LIBELLE = "SAMPLE_TEXT";
 	private static final String UPDATED_LIBELLE = "UPDATED_TEXT";
+
+	private static final Integer DEFAULT_NUMERO = 0;
+	private static final Integer UPDATED_NUMERO = 1;
+
 	private static final String DEFAULT_SCENARIO = "SAMPLE_TEXT";
 	private static final String UPDATED_SCENARIO = "UPDATED_TEXT";
+
 	private static final String DEFAULT_EXPLICATION = "SAMPLE_TEXT";
 	private static final String UPDATED_EXPLICATION = "UPDATED_TEXT";
 
@@ -70,6 +78,7 @@ public class QuestionResourceTest {
 	public void initTest() {
 		question = new Question();
 		question.setLibelle(DEFAULT_LIBELLE);
+		question.setNumero(DEFAULT_NUMERO);
 		question.setScenario(DEFAULT_SCENARIO);
 		question.setExplication(DEFAULT_EXPLICATION);
 	}
@@ -78,7 +87,8 @@ public class QuestionResourceTest {
 	@Transactional
 	public void createQuestion() throws Exception {
 		// Validate the database is empty
-		assertThat(questionRepository.findAll()).hasSize(0);
+		assertThat(questionRepository.findAll()).hasSize(
+				NUMBER_OF_INITIAL_QUESTIONS);
 
 		// Create the Question
 		restQuestionMockMvc.perform(
@@ -89,9 +99,17 @@ public class QuestionResourceTest {
 
 		// Validate the Question in the database
 		List<Question> questions = questionRepository.findAll();
-		assertThat(questions).hasSize(1);
-		Question testQuestion = questions.iterator().next();
+		assertThat(questions).hasSize(NUMBER_OF_INITIAL_QUESTIONS + 1);
+
+		Question testQuestion = null;
+		Iterator<Question> questionIt = questions.iterator();
+
+		while (questionIt.hasNext()) {
+			testQuestion = questionIt.next();
+		}
+
 		assertThat(testQuestion.getLibelle()).isEqualTo(DEFAULT_LIBELLE);
+		assertThat(testQuestion.getNumero()).isEqualTo(DEFAULT_NUMERO);
 		assertThat(testQuestion.getScenario()).isEqualTo(DEFAULT_SCENARIO);
 		assertThat(testQuestion.getExplication())
 				.isEqualTo(DEFAULT_EXPLICATION);
@@ -109,15 +127,26 @@ public class QuestionResourceTest {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 				.andExpect(
-						jsonPath("$.[0].id").value(question.getId().intValue()))
+						jsonPath("$.[" + NUMBER_OF_INITIAL_QUESTIONS + "].id")
+								.value(question.getId().intValue()))
 				.andExpect(
-						jsonPath("$.[0].libelle").value(
+						jsonPath(
+								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
+										+ "].libelle").value(
 								DEFAULT_LIBELLE.toString()))
 				.andExpect(
-						jsonPath("$.[0].scenario").value(
+						jsonPath(
+								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
+										+ "].numero").value(DEFAULT_NUMERO))
+				.andExpect(
+						jsonPath(
+								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
+										+ "].scenario").value(
 								DEFAULT_SCENARIO.toString()))
 				.andExpect(
-						jsonPath("$.[0].explication").value(
+						jsonPath(
+								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
+										+ "].explication").value(
 								DEFAULT_EXPLICATION.toString()));
 	}
 
@@ -135,6 +164,7 @@ public class QuestionResourceTest {
 				.andExpect(jsonPath("$.id").value(question.getId().intValue()))
 				.andExpect(
 						jsonPath("$.libelle").value(DEFAULT_LIBELLE.toString()))
+				.andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
 				.andExpect(
 						jsonPath("$.scenario").value(
 								DEFAULT_SCENARIO.toString()))
@@ -147,7 +177,7 @@ public class QuestionResourceTest {
 	@Transactional
 	public void getNonExistingQuestion() throws Exception {
 		// Get the question
-		restQuestionMockMvc.perform(get("/api/questions/{id}", 1L)).andExpect(
+		restQuestionMockMvc.perform(get("/api/questions/{id}", 99L)).andExpect(
 				status().isNotFound());
 	}
 
@@ -159,6 +189,7 @@ public class QuestionResourceTest {
 
 		// Update the question
 		question.setLibelle(UPDATED_LIBELLE);
+		question.setNumero(UPDATED_NUMERO);
 		question.setScenario(UPDATED_SCENARIO);
 		question.setExplication(UPDATED_EXPLICATION);
 		restQuestionMockMvc.perform(
@@ -169,9 +200,17 @@ public class QuestionResourceTest {
 
 		// Validate the Question in the database
 		List<Question> questions = questionRepository.findAll();
-		assertThat(questions).hasSize(1);
-		Question testQuestion = questions.iterator().next();
+		assertThat(questions).hasSize(NUMBER_OF_INITIAL_QUESTIONS + 1);
+
+		Question testQuestion = null;
+		Iterator<Question> questionIt = questions.iterator();
+
+		while (questionIt.hasNext()) {
+			testQuestion = questionIt.next();
+		}
+
 		assertThat(testQuestion.getLibelle()).isEqualTo(UPDATED_LIBELLE);
+		assertThat(testQuestion.getNumero()).isEqualTo(UPDATED_NUMERO);
 		assertThat(testQuestion.getScenario()).isEqualTo(UPDATED_SCENARIO);
 		assertThat(testQuestion.getExplication())
 				.isEqualTo(UPDATED_EXPLICATION);
@@ -191,6 +230,6 @@ public class QuestionResourceTest {
 
 		// Validate the database is empty
 		List<Question> questions = questionRepository.findAll();
-		assertThat(questions).hasSize(0);
+		assertThat(questions).hasSize(NUMBER_OF_INITIAL_QUESTIONS);
 	}
 }
