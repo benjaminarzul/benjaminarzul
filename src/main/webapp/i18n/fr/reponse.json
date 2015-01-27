@@ -2,19 +2,18 @@
     "togafquizzApp": {
         "reponse" : {
             "home": {
-                "title": "Reponses",
-                "createLabel": "Créer un nouveau Reponse",
-                "createOrEditLabel": "Créer ou éditer un Reponse"
+                "title": "Réponses",
+                "createLabel": "Créer une nouvelle réponse",
+                "createOrEditLabel": "Créer ou éditer une réponse"
             },
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Reponse {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer la réponse {{ id }} ?"
             },
             "detail": {
-                "title": "Reponse"
+                "title": "Réponse"
             },
-            "libelle": "Libelle",
-            "numero": "Numero",
-            "question": "question"
+            "libelle": "Libellé",
+            "numero": "Numéro d'ordre"
         }
     }
 }

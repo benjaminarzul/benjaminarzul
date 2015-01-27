@@ -3,17 +3,17 @@
         "session" : {
             "home": {
                 "title": "Sessions",
-                "createLabel": "Create a new Session",
-                "createOrEditLabel": "Create or edit a Session"
+                "createLabel": "Create a new session",
+                "createOrEditLabel": "Create or edit a session"
             },
             "delete": {
-                "question": "Are you sure you want to delete Session {{ id }}?"
+                "question": "Are you sure you want to delete session {{ id }}?"
             },
             "detail": {
                 "title": "Session"
             },
-            "debut": "Debut",
-            "fin": "Fin"
+            "debut": "Start date",
+            "fin": "End date"
         }
     }
 }

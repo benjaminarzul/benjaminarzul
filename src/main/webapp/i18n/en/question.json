@@ -3,21 +3,20 @@
         "question" : {
             "home": {
                 "title": "Questions",
-                "createLabel": "Create a new Question",
-                "createOrEditLabel": "Create or edit a Question"
+                "createLabel": "Create a new question",
+                "createOrEditLabel": "Create or edit a question"
             },
             "delete": {
-                "question": "Are you sure you want to delete Question {{ id }}?"
+                "question": "Are you sure you want to delete question {{ id }}?"
             },
             "detail": {
                 "title": "Question"
             },
-            "libelle": "Libelle",
-            "numero": "Numero",
+            "libelle": "Label",
+            "numero": "Order #",
             "scenario": "Scenario",
-            "explication": "Explication",
-            "quizz": "quizz",
-            "reponse": "reponse"
+            "explication": "Explanation",
+            "quizz": "Quizz"
         }
     }
 }

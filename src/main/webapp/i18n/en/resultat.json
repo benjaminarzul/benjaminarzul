@@ -2,19 +2,19 @@
     "togafquizzApp": {
         "resultat" : {
             "home": {
-                "title": "Resultats",
-                "createLabel": "Create a new Resultat",
-                "createOrEditLabel": "Create or edit a Resultat"
+                "title": "Results",
+                "createLabel": "Create a new result",
+                "createOrEditLabel": "Create or edit a result"
             },
             "delete": {
-                "question": "Are you sure you want to delete Resultat {{ id }}?"
+                "question": "Are you sure you want to delete result {{ id }} ?"
             },
             "detail": {
-                "title": "Resultat"
+                "title": "Result"
             },
-            "pourcentageReussite": "PourcentageReussite",
-            "user": "user",
-            "quizz": "quizz"
+            "pourcentageReussite": "Success rate (in %)",
+            "user": "Trainee",
+            "quizz": "Quizz"
         }
     }
 }

@@ -2,19 +2,19 @@
     "togafquizzApp": {
         "quizz" : {
             "home": {
-                "title": "Quizzs",
-                "createLabel": "Create a new Quizz",
-                "createOrEditLabel": "Create or edit a Quizz"
+                "title": "Quizzes",
+                "createLabel": "Create a new quizz",
+                "createOrEditLabel": "Create or edit a quizz"
             },
             "delete": {
-                "question": "Are you sure you want to delete Quizz {{ id }}?"
+                "question": "Are you sure you want to delete quizz {{ id }}?"
             },
             "detail": {
                 "title": "Quizz"
             },
-            "libelle": "Libelle",
-            "numero": "Numero",
-            "dureeEnMinutes": "DureeEnMinutes",
+            "libelle": "Label",
+            "numero": "Order #",
+            "dureeEnMinutes": "Duration (in minutes)",
             "type": "Type"
         }
     }

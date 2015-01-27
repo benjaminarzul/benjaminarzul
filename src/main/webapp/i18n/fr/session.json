@@ -3,17 +3,17 @@
         "session" : {
             "home": {
                 "title": "Sessions",
-                "createLabel": "Créer un nouveau Session",
-                "createOrEditLabel": "Créer ou éditer un Session"
+                "createLabel": "Créer une nouvelle session",
+                "createOrEditLabel": "Créer ou éditer une session"
             },
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Session {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer la session {{ id }} ?"
             },
             "detail": {
                 "title": "Session"
             },
-            "debut": "Debut",
-            "fin": "Fin"
+            "debut": "Date de début",
+            "fin": "Date de fin"
         }
     }
 }
