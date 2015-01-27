@@ -1,4 +1,4 @@
 id;login;password;first_name;last_name;society;email;activated;created_by;session_id
-5;jdupont;$2a$10$/BZ7qvf5hRHdjnPvSfXO4eIPtJRP42RESUxqLUAm8sypa8VAtf4Pm;Jean;DUPONT;PSA;NULL;true;anonymousUser;1
-6;mdurand;$2a$10$A2oAxJK/56VdZt3IP5Il9OywNzy7ZSQJrmXdvKgydecGtIy8ioaWS;Marc;DURAND;HYPER U;NULL;true;anonymousUser;1
-7;jleblond;$2a$10$/9i/Q3rgGQzehZos6u1fuO.h6Y2KEeGHX6i/pZdeHyJYNNuEJSt4u;Joel;LEBLOND;PSA;NULL;true;anonymousUser;1
+6;jdupont;$2a$10$/BZ7qvf5hRHdjnPvSfXO4eIPtJRP42RESUxqLUAm8sypa8VAtf4Pm;Jean;DUPONT;PSA;NULL;true;anonymousUser;1
+7;mdurand;$2a$10$A2oAxJK/56VdZt3IP5Il9OywNzy7ZSQJrmXdvKgydecGtIy8ioaWS;Marc;DURAND;HYPER U;NULL;true;anonymousUser;1
+8;jleblond;$2a$10$/9i/Q3rgGQzehZos6u1fuO.h6Y2KEeGHX6i/pZdeHyJYNNuEJSt4u;Joel;LEBLOND;PSA;NULL;true;anonymousUser;1

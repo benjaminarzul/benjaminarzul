@@ -1,0 +1,3 @@
+id;login;password;first_name;last_name;society;email;activated;created_by;session_id
+5;mgaragnon;$2a$10$EmNzHBx9.f0dRpXQDCT22u34wLloPAStC2O3wFR3DtYIVQ4iYdtMa;Marc;GARAGNON;SOFTEAM CADEXTAN;NULL;true;anonymousUser;NULL
+
