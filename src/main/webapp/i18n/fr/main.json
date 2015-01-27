@@ -1,6 +1,6 @@
 {
     "main": {
-        "title": "Bienvenue, Java Hipster !",
+        "title": "Bienvenue sur le site TOGAF Quizz",
         "subtitle": "Ceci est votre page d'accueil",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
@@ -13,6 +13,7 @@
             "contact": "Contactez-nous sur Twitter @java_hipster"
         },
         "like": "Si vous aimez JHipster, donnez nous une étoile sur",
-        "github": "Github"
+        "github": "Github",
+        "test": "Commencer le quizz de test"
     }
 }

@@ -3,7 +3,9 @@
         <div class="col-md-10 col-md-offset-1 text-center">
             <img src="../images/togaf.png">
             <br/><br/>
-            <h1>Bienvenue sur le site Togaf Quizz</h1>
+            <h1 translate="main.title">
+            	Welcome to the TOGAF Quizz site
+            </h1>
             <br/><br/>
             <div ng-switch="isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true"
@@ -11,8 +13,14 @@
                     You are logged in as user "Admin".
                 </div>
 
-                <div class="alert alert-info" ng-switch-when="false">
-                    Vous avez déjà un compte ? <a href="#/login">Connectez-vous</a>.
+                <div ng-switch-when="true" ng-show="isInRole('ROLE_STAGIAIRE')">
+                	<button type="button" class="btn btn-info btn-lg" translate="main.test">
+                		Start the test quizz
+                	</button>
+                </div>
+
+                <div class="alert alert-info" ng-switch-when="false" translate="global.messages.info.login">
+                    You already have an account ? <a href="#/login">Log in</a>
                 </div>
 
                 <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.register">

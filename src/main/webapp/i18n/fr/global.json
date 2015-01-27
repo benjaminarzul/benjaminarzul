@@ -8,9 +8,9 @@
                 "main": "Entités",
                 "quizz": "Quizz",
                 "question": "Question",
-                "reponse": "Reponse",
+                "reponse": "Réponse",
                 "session": "Session",
-                "resultat": "Resultat",
+                "resultat": "Résultat",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {
@@ -45,6 +45,7 @@
         "messages": {
             "info": {
                 "authenticated": "Si vous voulez vous <a href=\"#/login\">connecter</a>, vous pouvez utiliser les comptes par défaut : <br/> - Administrateur (nom d'utilisateur=\"admin\" et mot de passe =\"admin\") <br/> - Utilisateur (nom d'utilisateur=\"user\" et mot de passe =\"user\").",
+                "login": "Vous avez déjà un compte ? ? <a href=\"#/login\">Connectez-vous</a>",
                 "register": "Vous n'avez pas encore de compte ? <a href=\"#/register\">Créer un compte</a>"
             },
             "error": {
