@@ -5,7 +5,9 @@
 togafquizzApp.constant('USER_ROLES', {
         'all': '*',
         'admin': 'ROLE_ADMIN',
-        'user': 'ROLE_USER'
+        'user': 'ROLE_USER',
+        'formateur': 'ROLE_FORMATEUR',
+        'stagiaire': 'ROLE_STAGIAIRE'
     });
 
 /*

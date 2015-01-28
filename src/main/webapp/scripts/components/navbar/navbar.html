@@ -17,6 +17,21 @@
                         <span translate="global.menu.home">Home</span>
                     </a>
                 </li>
+                <li ng-class="{active: $state.includes('quizzes')}"  ng-switch-when="true" ng-show="isInRole('ROLE_STAGIAIRE')" class="dropdown pointer">
+                	<a class="dropdown-toggle" data-toggle="dropdown" href="">
+                                <span>
+                                    <span class="glyphicon glyphicon-tasks"></span>
+                                    <span class="hidden-tablet" translate="global.menu.quizzes.main">
+                                        Quizzes
+                                    </span>
+                                    <b class="caret"></b>
+                                </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                    	<li ui-sref-active="active" ><a ui-sref="myanswers"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span translate="global.menu.quizzes.myanswers">My quizzes answers</span></a></li>
+                    </ul>
+                </li>
                 <li ui-sref-active="active" ng-show="isInRole('ROLE_ADMIN')" ng-switch-when="true" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                                 <span>
