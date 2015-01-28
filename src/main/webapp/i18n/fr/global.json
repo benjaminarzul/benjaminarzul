@@ -8,9 +8,9 @@
                 "main": "Entités",
                 "quizz": "Quizz",
                 "question": "Question",
-                "reponse": "Réponse",
+                "reponse": "Reponse",
                 "session": "Session",
-                "resultat": "Résultat",
+                "resultat": "Resultat",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {
