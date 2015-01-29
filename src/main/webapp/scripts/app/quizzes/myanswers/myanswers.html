@@ -1,7 +1,32 @@
 <div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h2 translate="myanswers.title">Here are the quizzes to pass</h2>
+            <blockquote>
+  				<p translate="myanswers.tips.tip1">Welcome to the quizzes response page of the TOGAF training. You have until the end of the session to answer to all the quizzes.</p>
+  				<p translate="myanswers.tips.tip2">You can repass a quizz as many times as you like. The success rate will be recorded only the first time you pass the quizz.</p>
+  				<footer translate="myanswers.tips.author">your TOGAF coach</footer>
+			</blockquote>
+			<h3 translate="myanswers.title">Select the quizz you want to pass</h3>
+			<div class="table-responsive">
+        		<table class="table table-striped">
+            		<tbody>
+                		<tr ng-repeat="quizz in quizzs">
+                    		<td><strong>{{quizz.libelle}}</strong></td>
+                    		<td><span translate="myanswers.duration">duration</span> {{quizz.dureeEnMinutes}} <span translate="myanswers.minutes">minutes</span></td>
+                    		<td>
+                        		<button type="submit"
+                                		class="btn btn-primary">
+                            		<span class="glyphicon glyphicon-play"></span>&nbsp;<span translate="myanswers.buttons.play"> Do the quizz</span>
+                        		</button>
+                        		<button type="submit"
+        		                        class="btn btn-warning">
+                		            <span class="glyphicon glyphicon-repeat"></span>&nbsp;<span translate="myanswers.buttons.replay"> Redo the quizz</span>
+                        		</button>
+                    		</td>
+                		</tr>
+            		</tbody>
+        		</table>
+			</div>
 		</div>
     </div>
 </div>

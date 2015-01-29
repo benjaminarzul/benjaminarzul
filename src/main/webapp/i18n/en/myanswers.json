@@ -1,5 +1,16 @@
 {
     "myanswers": {
-		"title": "Here are the quizzes to pass"	
+		"title": "Select the quizz you want to pass",
+		"tips": {
+			"tip1": "Welcome to the quizzes response page of the TOGAF training. You have until the end of the session to answer to all the quizzes.",
+			"tip2": "You can repass a quizz as many times as you like. The success rate will be recorded only the first time you pass the quizz.",
+			"author" : "your TOGAF coach"
+		},
+		"duration": "duration",
+		"minutes": "minutes",
+		"buttons": {
+			"play": " Do the quizz",
+			"replay": " Redo the quizz"
+		}
     }
 }

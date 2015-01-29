@@ -1,5 +1,16 @@
 {
     "myanswers": {
-		"title": "Voici les quizz à passer"
+		"title": "Sélectionnez le quizz que vous souhaitez passer",
+		"tips": {
+			"tip1": "Bienvenue sur la page de réponses aux quizz de la formation TOGAF. Vous avez jusqu'à la fin de session pour répondre à l'intégralité des quizz.",
+			"tip2": "Vous avez la possibilité de repasser un quizz autant de fois que vous le souhaitez. Le taux de réussite du quizz sera comptabilisé uniquement la première fois.",
+			"author" : "votre formateur TOGAF"
+		},
+		"duration": "durée",
+		"minutes": "minutes",
+		"buttons": {
+			"play": " Faire le quizz",
+			"replay": " Refaire le quizz"
+		}
     }
 }
