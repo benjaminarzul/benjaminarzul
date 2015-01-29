@@ -124,23 +124,15 @@ public class QuizzResourceTest {
 				.perform(get("/api/quizzs"))
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.[0].id").value(quizz.getId().intValue()))
 				.andExpect(
-						jsonPath("$.[" + NUMBER_OF_INITIAL_QUIZZ + "].id")
-								.value(quizz.getId().intValue()))
+						jsonPath("$.[0].libelle").value(
+								DEFAULT_LIBELLE.toString()))
+				.andExpect(jsonPath("$.[0].numero").value(DEFAULT_NUMERO))
 				.andExpect(
-						jsonPath("$.[" + NUMBER_OF_INITIAL_QUIZZ + "].libelle")
-								.value(DEFAULT_LIBELLE.toString()))
-				.andExpect(
-						jsonPath("$.[" + NUMBER_OF_INITIAL_QUIZZ + "].numero")
-								.value(DEFAULT_NUMERO))
-				.andExpect(
-						jsonPath(
-								"$.[" + NUMBER_OF_INITIAL_QUIZZ
-										+ "].dureeEnMinutes").value(
+						jsonPath("$.[0].dureeEnMinutes").value(
 								DEFAULT_DUREE_EN_MINUTES))
-				.andExpect(
-						jsonPath("$.[" + NUMBER_OF_INITIAL_QUIZZ + "].type")
-								.value(DEFAULT_TYPE));
+				.andExpect(jsonPath("$.[0].type").value(DEFAULT_TYPE));
 	}
 
 	@Test

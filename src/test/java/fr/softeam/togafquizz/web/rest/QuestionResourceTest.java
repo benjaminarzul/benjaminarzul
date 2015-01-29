@@ -127,26 +127,16 @@ public class QuestionResourceTest {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 				.andExpect(
-						jsonPath("$.[" + NUMBER_OF_INITIAL_QUESTIONS + "].id")
-								.value(question.getId().intValue()))
+						jsonPath("$.[0].id").value(question.getId().intValue()))
 				.andExpect(
-						jsonPath(
-								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
-										+ "].libelle").value(
+						jsonPath("$.[0].libelle").value(
 								DEFAULT_LIBELLE.toString()))
+				.andExpect(jsonPath("$.[0].numero").value(DEFAULT_NUMERO))
 				.andExpect(
-						jsonPath(
-								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
-										+ "].numero").value(DEFAULT_NUMERO))
-				.andExpect(
-						jsonPath(
-								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
-										+ "].scenario").value(
+						jsonPath("$.[0].scenario").value(
 								DEFAULT_SCENARIO.toString()))
 				.andExpect(
-						jsonPath(
-								"$.[" + NUMBER_OF_INITIAL_QUESTIONS
-										+ "].explication").value(
+						jsonPath("$.[0].explication").value(
 								DEFAULT_EXPLICATION.toString()));
 	}
 
