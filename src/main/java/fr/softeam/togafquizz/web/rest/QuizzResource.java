@@ -57,7 +57,7 @@ public class QuizzResource {
 	public List<Quizz> getAll() {
 		log.debug("REST request to get all Quizzs");
 
-		// trier par numéro croissant
+		// trier par numÃ©ro croissant
 		return quizzRepository.findAll(new Sort("numero"));
 	}
 

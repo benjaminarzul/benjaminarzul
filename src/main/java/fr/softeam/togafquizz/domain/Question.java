@@ -228,7 +228,7 @@ public class Question implements Serializable {
 				this.troisiemeMeilleureReponse == null ? "<aucune>"
 						: this.troisiemeMeilleureReponse.toStringSimplifie());
 
-		// réponses
+		// rÃ©ponses
 		builder.append(", reponses=");
 
 		if (CollectionUtils.isEmpty(this.reponses)) {

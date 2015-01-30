@@ -52,7 +52,7 @@ public class QuestionResource {
 	public List<Question> getAll() {
 		log.debug("REST request to get all Questions");
 
-		// trier par numéro croissant
+		// trier par numÃ©ro croissant
 		return questionRepository.findAll(new Sort("numero"));
 	}
 
